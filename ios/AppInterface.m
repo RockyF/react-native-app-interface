@@ -6,8 +6,10 @@
 RCT_EXPORT_MODULE()
 
 RCT_REMAP_METHOD(closeWindow,
-	withResolver:(RCTPromiseResolveBlock)resolve
-	withRejecter:(RCTPromiseRejectBlock)reject
+		withResolver:
+		(RCTPromiseResolveBlock) resolve
+		withRejecter:
+		(RCTPromiseRejectBlock) reject
 ) {
 	UIApplication *app = RCTSharedApplication();
 	for (NSWindow *window in app.windows) {
@@ -15,6 +17,18 @@ RCT_REMAP_METHOD(closeWindow,
 			[window close];
 		}
 	}
+	resolve(nil);
+}
+
+RCT_REMAP_METHOD(setCursor,
+		setCursorWithType:
+		(NSString *) type
+		withResolver:
+		(RCTPromiseResolveBlock) resolve
+		withRejecter:
+		(RCTPromiseRejectBlock) reject
+) {
+	[[NSCursor valueForKey:[type stringByAppendingString:@"Cursor"]] performSelector:@selector(set)];
 	resolve(nil);
 }
 
