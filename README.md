@@ -13,7 +13,7 @@ yarn add react-native-app-interface
 ## Usage
 
 ```js
-import {windowShouldClose} from "react-native-app-interface";
+import {windowShouldClose, setCursor} from "react-native-app-interface";
 
 // ...
 //prevent close action
@@ -24,6 +24,9 @@ windowShouldClose(()=>{
 		}, 1000);
 	});
 })
+
+//set system cursor
+setCursor('pointingHand');
 ```
 
 ## Contributing
